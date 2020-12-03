@@ -1,0 +1,113 @@
+options:
+    dcf_path: demo
+
+master:
+    node_id: 16
+    baud_rate: 500
+    heartbeat_consumer: false
+
+# This motor needs a homing.
+node_2:
+    dcf: demo_motor.eds
+    node_id: 2
+    boot: true
+    mandatory: true
+    reset_communication: true
+    tpdo:
+        1: 
+            cob_id: 0x182
+            transmission: 0xff
+            mapping:
+                - {index: 0x6041, sub_index: 0}  # Status Word
+    rpdo:
+        1:
+            cob_id: 0x202
+            transmission: 0xff
+            mapping:
+                - {index: 0x6040, sub_index: 0}  # Control Word
+                - {index: 0x6060, sub_index: 0}  # Mode of Operation
+        2:
+            cob_id: 0x302
+            transmission: 0xff
+            mapping:
+                - {index: 0x607a, sub_index: 0}  # Traget Position
+                - {index: 0x6081, sub_index: 0}  # Velocity
+        3:
+            cob_id: 0x402
+            transmission: 0xff
+            mapping:
+                - {index: 0x6083, sub_index: 0}  # Acceleration
+                - {index: 0x6084, sub_index: 0}  # Deceleration
+    sdo:
+        - {index: 0x6086, sub_index: 0,    value: 2}  # Motion_profile_type
+        - {index: 0x2005, sub_index: 0xe7, value: 3}  # PARAM_FD1_IN3_FD2_IN5
+
+# This motor is followed by node 4.
+node_3:
+    dcf: demo_motor.eds
+    node_id: 3
+    boot: true
+    mandatory: true
+    reset_communication: true
+    tpdo:
+        1: 
+            cob_id: 0x183
+            transmission: 0xff
+            mapping:
+                - {index: 0x6041, sub_index: 0}  # Status Word
+    rpdo:
+        1:
+            cob_id: 0x203
+            transmission: 0xff
+            mapping:
+                - {index: 0x6040, sub_index: 0}  # Control Word
+                - {index: 0x6060, sub_index: 0}  # Mode of Operation
+        2:
+            cob_id: 0x303
+            transmission: 0xff
+            mapping:
+                - {index: 0x607a, sub_index: 0}  # Traget Position
+                - {index: 0x6081, sub_index: 0}  # Velocity
+        3:
+            cob_id: 0x403
+            transmission: 0xff
+            mapping:
+                - {index: 0x6083, sub_index: 0}  # Acceleration
+                - {index: 0x6084, sub_index: 0}  # Deceleration
+    sdo:
+        - {index: 0x6086, sub_index: 0,    value: 2}  # Motion_profile_type
+
+# This motor follows node 3
+node_4:
+    dcf: demo_motor.eds
+    node_id: 4
+    boot: true
+    mandatory: true
+    reset_communication: true
+    tpdo:
+        1: 
+            cob_id: 0x184
+            transmission: 0xff
+            mapping:
+                - {index: 0x6041, sub_index: 0}  # Status Word
+    rpdo:
+        1:
+            cob_id: 0x203
+            transmission: 0xff
+            mapping:
+                - {index: 0x6040, sub_index: 0}  # Control Word
+                - {index: 0x6060, sub_index: 0}  # Mode of Operation
+        2:
+            cob_id: 0x303
+            transmission: 0xff
+            mapping:
+                - {index: 0x607a, sub_index: 0}  # Traget Position
+                - {index: 0x6081, sub_index: 0}  # Velocity
+        3:
+            cob_id: 0x403
+            transmission: 0xff
+            mapping:
+                - {index: 0x6083, sub_index: 0}  # Acceleration
+                - {index: 0x6084, sub_index: 0}  # Deceleration
+    sdo:
+        - {index: 0x6086, sub_index: 0,    value: 2}  # Motion_profile_type
