@@ -7,7 +7,7 @@
 
 # Prequesites
 
-* To get this working, Lely Core master, [at least](https://gitlab.com/lely_industries/lely-core/-/commit/ceee298045367e19b2cab1427ef05ec960c0489a), is needed
+* To get this working, Lely Core master, at least [this revision](https://gitlab.com/lely_industries/lely-core/-/commit/ceee298045367e19b2cab1427ef05ec960c0489a) is needed
 * ~~You have to apply `patches/0001-Add-flag-to-determine-which-parameters-were-set-expl.patch` to Lely-Core.~~
   * This patch is needed for the textual DCF configuration to determine which DCFs were configured with `ParameterValue=` in the .dcf file.
   * Only those DCFs are transferred to the slaves.
