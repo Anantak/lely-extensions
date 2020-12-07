@@ -48,7 +48,7 @@ DCFDriverConfig::ObjectsList DCFDriverConfig::getSDOIndicesForDriverConfiguratio
 		for (auto sdoSubIndex : sdoSubIndices)
 		{
 			lely::COSub* sdoSubObject = sdoObject->find(sdoSubIndex);
-			if ((sdoSubObject->getAccess() & CO_ACCESS_READ) && (sdoSubObject->getAccess() & CO_ACCESS_WRITE) && (sdoSubObject->getFlags() & CO_OBJ_FLAGS_VAL_SET_EXPLICITLY))
+			if ((sdoSubObject->getAccess() & CO_ACCESS_READ) && (sdoSubObject->getAccess() & CO_ACCESS_WRITE) && (sdoSubObject->getFlags() & CO_OBJ_FLAGS_PARAMETER_VALUE))
 			{
 				diag(DIAG_INFO, 0, "    Adding SDO 0x%04x/0x%02x (%s / %s) ...", sdoObject->getIdx(), sdoSubObject->getSubidx(), sdoObject->getName(), sdoSubObject->getName());
 				subIndexResult.push_back(sdoSubIndex);
