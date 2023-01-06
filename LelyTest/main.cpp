@@ -53,7 +53,7 @@ void demoFollowerMove(std::shared_ptr<DCFConfigMaster> master, std::function<voi
 	// - Drive 3 and 4 drive control each side of a belt conveyor and have to run absolutely synchronous, so drive 4 follows drive 3.
 	// This demo does the following:
 	// 1) Clear the belt conveyor: turn drive 3 and 4 in relative movement in both directions
-	//    Since the folower relation ship is not possible in SDO mode, only drive 3 will turn in this mode.
+	//    Since the follower relationship is not possible in SDO mode, only drive 3 will turn in this mode.
 	master->getDriver(3)->GetExecutor().post([master,callback]()
 	{
 		// Step 1:
@@ -222,7 +222,8 @@ std::shared_ptr<DCFConfigMaster> initializeMasterForPdoControlWithManualMapping(
 std::shared_ptr<DCFConfigMaster> initializeMasterForSdoControl(lely::io::Timer& timer, lely::ev::Executor& exec, lely::io::CanChannel& channel)
 {
 	auto master = std::make_shared<DCFConfigMaster>(timer, channel, /* dcf description of the master */ "master.dcf", exec);
-	master->setDriverFactory([exec,master](std::shared_ptr<DCFDriverConfig> config)
+	master->setDriverFactory(
+			[exec,master](std::shared_ptr<DCFDriverConfig> config)
 	{
 		// TODO if multiple different devices are in use: decide up on the config which driver to create.
 		std::shared_ptr<MotorDriver> driver = std::make_shared<MotorDriver>(exec, *master, config);
@@ -293,6 +294,3 @@ int main()
 
 	return 0;
 }
-
-
-

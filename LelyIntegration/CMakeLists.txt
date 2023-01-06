@@ -14,8 +14,9 @@ set(SOURCES
   ./src/MotorDriver.cpp
 )
 
-set(LELY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/lely-core)
-INCLUDE(${LELY}/include-lely-core.cmake)
+# set(LELY ${CMAKE_CURRENT_SOURCE_DIR}/../3rdParty/lely-core)
+# INCLUDE(${LELY}/include-lely-core.cmake)
+INCLUDE(${PROJECT_SOURCE_DIR}/../cmake/include-lely-core.cmake)
 
 add_library(LelyIntegration STATIC
   ${SOURCES}

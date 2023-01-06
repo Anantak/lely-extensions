@@ -37,13 +37,13 @@ DCFDriverConfig::DCFDriverConfig(const std::string &textualDcfFileName, const st
 
 DCFDriverConfig::ObjectsList DCFDriverConfig::getSDOIndicesForDriverConfiguration() const
 {
-	ObjectsList result;
+	ObjectsList result;  // typedef std::vector<std::tuple<uint16_t, std::vector<uint8_t>>> ObjectsList
 	std::vector<uint16_t> sdoIndices = reinterpret_cast<lely::CODev*>(dev())->getIdx();
 	for (auto sdoIndex : sdoIndices)
 	{
 		lely::COObj* sdoObject = reinterpret_cast<lely::CODev*>(dev())->find(sdoIndex);
 		std::vector<uint8_t> sdoSubIndices = sdoObject->getSubidx();
-		result.push_back({sdoIndex, {}});
+		result.push_back(std::make_tuple(sdoIndex, std::vector<uint8_t>()));
 		auto& subIndexResult = std::get<1>(*result.rbegin());
 		for (auto sdoSubIndex : sdoSubIndices)
 		{
@@ -70,8 +70,3 @@ uint16_t DCFDriverConfig::getTypeOfObject(uint16_t sdoIndex, uint8_t sdoSubIndex
 		return 0;
 	return sdoSubObject->getType();
 }
-
-
-
-
-

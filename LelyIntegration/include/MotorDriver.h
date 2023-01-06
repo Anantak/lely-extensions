@@ -25,7 +25,7 @@
 #include "DCFDriver.h"
 
 /**
- * @brief The MotorDriver class controls a CiA-402 compiant motor.
+ * @brief The MotorDriver class controls a CiA-402 compliant motor.
  */
 class MotorDriver : public DCFDriver
 {
